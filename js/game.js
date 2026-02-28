@@ -1,12 +1,25 @@
 let currentQuestion = "";
+let currentSuite = "";
 let sessionData = [];
+let askedQuestions = [];
+let startTime = Date.now();
 
 function drawQuestion() {
   const suite = document.getElementById("suiteSelect").value;
-  const questions = questionBank[suite];
+  currentSuite = suite;
 
-  const randomIndex = Math.floor(Math.random() * questions.length);
-  currentQuestion = questions[randomIndex];
+  const questions = questionBank[suite];
+  const availableQuestions = questions.filter(q => !askedQuestions.includes(q));
+
+  if (availableQuestions.length === 0) {
+    alert("All questions in this suite have been used.");
+    return;
+  }
+
+  const randomIndex = Math.floor(Math.random() * availableQuestions.length);
+  currentQuestion = availableQuestions[randomIndex];
+
+  askedQuestions.push(currentQuestion);
 
   document.getElementById("questionText").innerText = currentQuestion;
   document.getElementById("responseArea").style.display = "block";
@@ -25,6 +38,7 @@ function saveResponse() {
   }
 
   sessionData.push({
+    suite: currentSuite,
     question: currentQuestion,
     chairResponse: chair,
     studentResponse: student
@@ -34,6 +48,18 @@ function saveResponse() {
 }
 
 function endSession() {
-  localStorage.setItem("sessionSummary", JSON.stringify(sessionData));
+  const endTime = Date.now();
+  const durationMinutes = Math.round((endTime - startTime) / 60000);
+
+  const reflection = prompt("What is one key insight from this session?");
+
+  const sessionPackage = {
+    title: document.getElementById("sessionTitle").value || "Untitled Session",
+    duration: durationMinutes,
+    reflection: reflection || "",
+    responses: sessionData
+  };
+
+  localStorage.setItem("sessionSummary", JSON.stringify(sessionPackage));
   window.location.href = "summary.html";
 }
