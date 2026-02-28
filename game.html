@@ -36,11 +36,22 @@
   </div>
 
   <div id="responseArea" style="display:none; margin-top:20px;">
-    <textarea id="chairResponse" placeholder="Chair Response"></textarea>
-    <textarea id="studentResponse" placeholder="Student Response"></textarea>
-
+  
+    <div class="voice-block">
+      <label><strong>Chair Response</strong></label>
+      <button class="voice-btn" onclick="startVoice('chairResponse')">🎤 Record</button>
+      <textarea id="chairResponse" placeholder="Chair Response"></textarea>
+    </div>
+  
+    <div class="voice-block">
+      <label><strong>Student Response</strong></label>
+      <button class="voice-btn" onclick="startVoice('studentResponse')">🎤 Record</button>
+      <textarea id="studentResponse" placeholder="Student Response"></textarea>
+    </div>
+  
     <button class="btn" onclick="saveResponse()">Save & Next</button>
     <button class="btn secondary" onclick="endSession()">End Session</button>
+  
   </div>
 
   <div style="margin-top:40px;">
