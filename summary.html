@@ -6,11 +6,18 @@
 </head>
 <body>
 
-  <div class="container">
-    <h1>Session Summary</h1>
-    <p>Session recap and export will appear here.</p>
-    <a href="index.html" class="btn">Back</a>
+<div class="container">
+  <h1>Session Summary</h1>
+
+  <div id="summaryContainer"></div>
+
+  <div style="margin-top:30px;">
+    <button class="btn" onclick="printSummary()">Print</button>
+    <button class="btn secondary" onclick="resetSession()">Start New Session</button>
   </div>
+</div>
+
+<script src="js/summary.js"></script>
 
 </body>
 </html>
