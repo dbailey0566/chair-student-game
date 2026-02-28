@@ -125,3 +125,71 @@ function resetGame() {
   document.getElementById("timer").innerText = 20;
   document.getElementById("judgeControls").style.display = "none";
 }
+
+
+/* ===============================
+   Voice for Debate Mode
+================================ */
+
+let debateRecognition;
+let debateRecording = false;
+
+function startDebateVoice() {
+
+  if (!('webkitSpeechRecognition' in window)) {
+    alert("Voice recognition not supported in this browser. Use Chrome or Edge.");
+    return;
+  }
+
+  if (!debateRecognition) {
+    debateRecognition = new webkitSpeechRecognition();
+    debateRecognition.continuous = true;
+    debateRecognition.interimResults = false;
+    debateRecognition.lang = "en-US";
+
+    debateRecognition.onresult = function(event) {
+      let transcript = "";
+      for (let i = event.resultIndex; i < event.results.length; ++i) {
+        transcript += event.results[i][0].transcript + " ";
+      }
+
+      document.getElementById("debateResponse").value += transcript;
+    };
+
+    debateRecognition.onend = function() {
+      if (debateRecording) {
+        debateRecognition.start(); // auto-restart
+      } else {
+        hideDebateIndicator();
+      }
+    };
+
+    debateRecognition.onerror = function(event) {
+      console.error("Debate voice error:", event);
+    };
+  }
+
+  if (debateRecording) {
+    stopDebateVoice();
+    return;
+  }
+
+  debateRecording = true;
+  showDebateIndicator();
+  debateRecognition.start();
+}
+
+function stopDebateVoice() {
+  debateRecording = false;
+  debateRecognition.stop();
+}
+
+function showDebateIndicator() {
+  const indicator = document.getElementById("debate-indicator");
+  if (indicator) indicator.style.display = "inline";
+}
+
+function hideDebateIndicator() {
+  const indicator = document.getElementById("debate-indicator");
+  if (indicator) indicator.style.display = "none";
+}
