@@ -117,6 +117,10 @@ setInterval(() => {
    Voice to Text
 ================================ */
 
+/* ===============================
+   Voice to Text
+================================ */
+
 let recognition;
 let activeTextarea = null;
 
@@ -143,10 +147,18 @@ function startVoice(textareaId) {
     };
 
     recognition.onend = function() {
+      if (activeTextarea) {
+        const indicator = document.getElementById(activeTextarea + "-indicator");
+        if (indicator) indicator.style.display = "none";
+      }
       activeTextarea = null;
     };
   }
 
   activeTextarea = textareaId;
+
+  const indicator = document.getElementById(textareaId + "-indicator");
+  if (indicator) indicator.style.display = "inline";
+
   recognition.start();
 }
