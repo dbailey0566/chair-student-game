@@ -36,11 +36,31 @@
   </p>
 
   <!-- RESPONSE BOX -->
-  <textarea 
-    id="debateResponse" 
-    placeholder="Type your response here..."
-    style="margin-top:15px;"
-  ></textarea>
+  <div class="voice-block" style="margin-top:15px;">
+  
+    <div>
+      <button 
+        type="button" 
+        class="voice-btn" 
+        onclick="startDebateVoice()"
+      >
+        🎤 Start / Stop
+      </button>
+  
+      <span 
+        class="recording-indicator" 
+        id="debate-indicator"
+      >
+        ● Recording
+      </span>
+    </div>
+  
+    <textarea 
+      id="debateResponse" 
+      placeholder="Type or speak your response..."
+    ></textarea>
+  
+  </div>
 
   <!-- WORD COUNT -->
   <p style="margin-top:10px;">
