@@ -1,1 +1,44 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chair–Student Game</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="container">
+  <h1>Chair–Student Alignment Session</h1>
+
+  <label for="suiteSelect">Choose Suite:</label>
+  <select id="suiteSelect">
+    <option value="expectations">Expectations</option>
+    <option value="career">Career</option>
+    <option value="social">Social</option>
+    <option value="policy">Policy</option>
+  </select>
+
+  <button class="btn" onclick="drawQuestion()">Draw Question</button>
+
+  <div id="questionArea" style="margin-top:30px;">
+    <h3 id="questionText"></h3>
+  </div>
+
+  <div id="responseArea" style="display:none; margin-top:20px;">
+    <textarea id="chairResponse" placeholder="Chair Response"></textarea>
+    <textarea id="studentResponse" placeholder="Student Response"></textarea>
+
+    <button class="btn" onclick="saveResponse()">Save & Next</button>
+    <button class="btn secondary" onclick="endSession()">End Session</button>
+  </div>
+
+  <div style="margin-top:40px;">
+    <a href="index.html" class="btn secondary">Back</a>
+  </div>
+</div>
+
+<script src="js/questions.js"></script>
+<script src="js/game.js"></script>
+
+</body>
+</html>
