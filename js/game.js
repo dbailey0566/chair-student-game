@@ -112,3 +112,41 @@ setInterval(() => {
 
   timerElement.innerText = "Session Time: " + minutes + " min";
 }, 60000);
+
+/* ===============================
+   Voice to Text
+================================ */
+
+let recognition;
+let activeTextarea = null;
+
+function startVoice(textareaId) {
+
+  if (!('webkitSpeechRecognition' in window)) {
+    alert("Voice recognition not supported in this browser. Use Chrome or Edge.");
+    return;
+  }
+
+  if (!recognition) {
+    recognition = new webkitSpeechRecognition();
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.lang = "en-US";
+
+    recognition.onresult = function(event) {
+      const transcript = event.results[0][0].transcript;
+      document.getElementById(activeTextarea).value += transcript;
+    };
+
+    recognition.onerror = function(event) {
+      console.error("Speech recognition error", event);
+    };
+
+    recognition.onend = function() {
+      activeTextarea = null;
+    };
+  }
+
+  activeTextarea = textareaId;
+  recognition.start();
+}
