@@ -118,11 +118,12 @@ setInterval(() => {
 ================================ */
 
 /* ===============================
-   Voice to Text
+   Improved Voice to Text
 ================================ */
 
 let recognition;
 let activeTextarea = null;
+let isRecording = false;
 
 function startVoice(textareaId) {
 
@@ -133,32 +134,60 @@ function startVoice(textareaId) {
 
   if (!recognition) {
     recognition = new webkitSpeechRecognition();
-    recognition.continuous = false;
+    recognition.continuous = true;        // IMPORTANT
     recognition.interimResults = false;
     recognition.lang = "en-US";
 
     recognition.onresult = function(event) {
-      const transcript = event.results[0][0].transcript;
-      document.getElementById(activeTextarea).value += transcript;
-    };
+      let transcript = "";
+      for (let i = event.resultIndex; i < event.results.length; ++i) {
+        transcript += event.results[i][0].transcript + " ";
+      }
 
-    recognition.onerror = function(event) {
-      console.error("Speech recognition error", event);
+      if (activeTextarea) {
+        document.getElementById(activeTextarea).value += transcript;
+      }
     };
 
     recognition.onend = function() {
-      if (activeTextarea) {
-        const indicator = document.getElementById(activeTextarea + "-indicator");
-        if (indicator) indicator.style.display = "none";
+      // If still recording, restart automatically
+      if (isRecording) {
+        recognition.start();
+      } else {
+        hideIndicator();
       }
-      activeTextarea = null;
+    };
+
+    recognition.onerror = function(event) {
+      console.error("Speech recognition error:", event);
     };
   }
 
-  activeTextarea = textareaId;
+  // Toggle behavior
+  if (isRecording) {
+    stopVoice();
+    return;
+  }
 
+  activeTextarea = textareaId;
+  isRecording = true;
+
+  showIndicator(textareaId);
+  recognition.start();
+}
+
+function stopVoice() {
+  isRecording = false;
+  recognition.stop();
+}
+
+function showIndicator(textareaId) {
   const indicator = document.getElementById(textareaId + "-indicator");
   if (indicator) indicator.style.display = "inline";
+}
 
-  recognition.start();
+function hideIndicator() {
+  if (!activeTextarea) return;
+  const indicator = document.getElementById(activeTextarea + "-indicator");
+  if (indicator) indicator.style.display = "none";
 }
