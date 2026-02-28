@@ -1,7 +1,6 @@
 let currentQuestion = "";
 let currentSuite = "";
 let sessionData = [];
-let askedQuestions = [];
 let startTime = Date.now();
 
 /* ===============================
@@ -19,19 +18,18 @@ function drawQuestion() {
     return;
   }
 
-  const availableQuestions = questions.filter(
-    q => !askedQuestions.includes(q)
+  // Remove any question already asked in this session
+  const availableQuestions = questions.filter(q =>
+    !sessionData.some(item => item.question === q)
   );
 
   if (availableQuestions.length === 0) {
-    alert("All questions in this suite have been used.");
+    alert("All questions in this suite have already been used.");
     return;
   }
 
   const randomIndex = Math.floor(Math.random() * availableQuestions.length);
   currentQuestion = availableQuestions[randomIndex];
-
-  askedQuestions.push(currentQuestion);
 
   document.getElementById("questionText").innerText = currentQuestion;
   document.getElementById("responseArea").style.display = "block";
