@@ -1,1 +1,74 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rapid Response Mode</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="container">
+
+  <h1>Rapid Response Mode</h1>
+  <p>20 seconds. Minimum 20 words. Judge decides. First to 50 points wins.</p>
+
+  <!-- SCOREBOARD -->
+  <div class="scoreboard" style="display:flex; justify-content:space-between; margin-bottom:20px;">
+    <h3>Chair: <span id="chairScore">0</span></h3>
+    <h3>Student: <span id="studentScore">0</span></h3>
+  </div>
+
+  <!-- CURRENT TURN -->
+  <h2 id="currentTurn">Chair's Turn</h2>
+
+  <!-- START ROUND BUTTON -->
+  <button type="button" class="btn" onclick="startRound()">Start Round</button>
+
+  <!-- QUESTION DISPLAY -->
+  <div id="questionArea" style="margin-top:25px;">
+    <h3 id="questionText"></h3>
+  </div>
+
+  <!-- TIMER -->
+  <p style="margin-top:15px;">
+    Time Remaining: <strong><span id="timer">20</span></strong> seconds
+  </p>
+
+  <!-- RESPONSE BOX -->
+  <textarea 
+    id="debateResponse" 
+    placeholder="Type your response here..."
+    style="margin-top:15px;"
+  ></textarea>
+
+  <!-- WORD COUNT -->
+  <p style="margin-top:10px;">
+    Word Count: <strong><span id="wordCount">0</span></strong>
+  </p>
+
+  <!-- SUBMIT BUTTON -->
+  <button type="button" class="btn" onclick="submitRound()">Submit</button>
+
+  <!-- JUDGE CONTROLS -->
+  <div id="judgeControls" style="margin-top:20px; display:none;">
+    <button type="button" class="btn" onclick="judgeAnswer(true)">
+      Judge: Accept (+10)
+    </button>
+    <button type="button" class="btn secondary" onclick="judgeAnswer(false)">
+      Judge: Reject (0)
+    </button>
+  </div>
+
+  <!-- NAVIGATION -->
+  <div style="margin-top:40px;">
+    <a href="index.html" class="btn secondary">Back</a>
+  </div>
+
+</div>
+
+<script src="js/questions.js"></script>
+<script src="js/debate.js"></script>
+
+</body>
+</html>
