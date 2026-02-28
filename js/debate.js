@@ -47,6 +47,7 @@ function countdown() {
 ========================= */
 
 function submitRound() {
+  stopDebateVoice();
   clearInterval(timerInterval);
   evaluateRound();
 }
