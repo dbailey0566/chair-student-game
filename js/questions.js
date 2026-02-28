@@ -1,28 +1,95 @@
 const questionBank = {
+
   expectations: [
     "How often should we meet?",
     "What are the expectations regarding turnaround time for feedback?",
     "What is your supervision style?",
     "How should we communicate?",
-    "What responsibilities might impact availability?"
+    "What responsibilities might impact availability?",
+    "What does preparation for meetings look like for each of us?",
+    "What constitutes acceptable progress between meetings?",
+    "How will we handle missed deadlines?",
+    "What level of independence is expected in year one?",
+    "How do we address misunderstandings if they arise?",
+    "What does high-quality work look like in this program?",
+    "What are expectations around conference participation?",
+    "How should drafts be formatted or submitted?",
+    "How quickly should concerns be raised if something feels off track?",
+    "What are expectations around responsiveness to email?",
+    "How should we handle extended absences?",
+    "What are expectations regarding research productivity?",
+    "How do we clarify authorship expectations early?",
+    "What is the process if either of us feels the relationship is not working?",
+    "How will we evaluate progress at formal checkpoints?"
   ],
 
   career: [
     "What are your long-term career goals?",
     "How can this doctorate support your professional trajectory?",
     "What conferences or professional groups are important in this field?",
-    "What skills should be developed during this program?"
+    "What skills should be developed during this program?",
+    "What does success look like beyond graduation?",
+    "How do we build a competitive CV during this program?",
+    "What publication expectations are realistic?",
+    "What professional networks should be cultivated?",
+    "How can this research align with future leadership roles?",
+    "What certifications or credentials might strengthen your career?",
+    "What skills gaps should we intentionally address?",
+    "How do we balance academic rigor with applied impact?",
+    "What mentoring beyond supervision might be helpful?",
+    "What kinds of presentations should be prioritized?",
+    "How do we prepare for academic vs practitioner pathways?",
+    "What evidence of impact should be collected along the way?",
+    "How will this dissertation position you in the job market?",
+    "What career risks should we plan for?",
+    "How can we leverage institutional resources for advancement?",
+    "What professional identity are you developing through this work?"
   ],
 
   social: [
     "What commitments outside work should be understood?",
     "How do you manage stress during demanding periods?",
-    "What does a healthy working relationship look like to you?"
+    "What does a healthy working relationship look like to you?",
+    "What boundaries are important in this working relationship?",
+    "How do you prefer to receive constructive criticism?",
+    "What does work-life balance look like for you?",
+    "Are there times of year that are particularly difficult?",
+    "How do we acknowledge major life events?",
+    "How do you define respect in professional interactions?",
+    "What communication tone feels supportive vs discouraging?",
+    "How do you recharge during heavy workload periods?",
+    "What signals indicate burnout for you?",
+    "How do we maintain motivation during slow research phases?",
+    "How do we handle emotional stress connected to research?",
+    "What cultural expectations should we be aware of?",
+    "What personal strengths should be leveraged in this partnership?",
+    "What relational habits build trust for you?",
+    "How do we recover from conflict productively?",
+    "What does psychological safety mean in this relationship?",
+    "What does mutual accountability look like?"
   ],
 
   policy: [
     "What institutional policies are important to understand?",
     "Where can support resources be accessed?",
-    "What are key program milestones and requirements?"
+    "What are key program milestones and requirements?",
+    "What academic integrity expectations must be clarified?",
+    "How is authorship determined at this institution?",
+    "What IRB or ethics requirements apply to this research?",
+    "What funding policies should be understood?",
+    "What leave policies apply during the program?",
+    "What accessibility accommodations are available?",
+    "What grievance processes exist if needed?",
+    "What progress documentation is required annually?",
+    "What data management policies apply?",
+    "What AI use policies should we clarify?",
+    "What intellectual property considerations exist?",
+    "What publication approval processes exist?",
+    "What institutional review checkpoints must be met?",
+    "What travel funding policies should we know?",
+    "What policies affect dissertation formatting and submission?",
+    "What program handbook sections are most important?",
+    "What compliance expectations must not be overlooked?"
   ]
+
 };
