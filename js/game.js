@@ -63,3 +63,11 @@ function endSession() {
   localStorage.setItem("sessionSummary", JSON.stringify(sessionPackage));
   window.location.href = "summary.html";
 }
+
+setInterval(() => {
+  const now = Date.now();
+  const minutes = Math.round((now - startTime) / 60000);
+  document.getElementById("timer").innerText = "Session Time: " + minutes + " min";
+}, 60000);
+
+
