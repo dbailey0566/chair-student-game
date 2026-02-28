@@ -13,7 +13,7 @@
   <input 
     type="text" 
     id="sessionTitle" 
-    placeholder="Enter Session Title" 
+    placeholder="Enter Session Title"
     style="width:100%; padding:10px; margin-bottom:20px;"
   >
 
@@ -29,34 +29,71 @@
 
   <br>
 
-  <button class="btn" onclick="drawQuestion()">Draw Question</button>
+  <button type="button" class="btn" onclick="drawQuestion()">Draw Question</button>
 
   <div id="questionArea" style="margin-top:30px;">
     <h3 id="questionText"></h3>
   </div>
 
   <div id="responseArea" style="display:none; margin-top:20px;">
-  
+
     <div class="voice-block">
       <label><strong>Chair Response</strong></label>
-      <button class="voice-btn" onclick="startVoice('chairResponse')">🎤 Record</button>
-      <textarea id="chairResponse" placeholder="Chair Response"></textarea>
+      <div>
+        <button 
+          type="button" 
+          class="voice-btn" 
+          onclick="startVoice('chairResponse')"
+        >
+          🎤 Record
+        </button>
+        <span 
+          class="recording-indicator" 
+          id="chairResponse-indicator" 
+          style="display:none; color:red; margin-left:10px;"
+        >
+          ● Recording...
+        </span>
+      </div>
+      <textarea 
+        id="chairResponse" 
+        placeholder="Chair Response"
+      ></textarea>
     </div>
-  
+
     <div class="voice-block">
       <label><strong>Student Response</strong></label>
-      <button class="voice-btn" onclick="startVoice('studentResponse')">🎤 Record</button>
-      <textarea id="studentResponse" placeholder="Student Response"></textarea>
+      <div>
+        <button 
+          type="button" 
+          class="voice-btn" 
+          onclick="startVoice('studentResponse')"
+        >
+          🎤 Record
+        </button>
+        <span 
+          class="recording-indicator" 
+          id="studentResponse-indicator" 
+          style="display:none; color:red; margin-left:10px;"
+        >
+          ● Recording...
+        </span>
+      </div>
+      <textarea 
+        id="studentResponse" 
+        placeholder="Student Response"
+      ></textarea>
     </div>
-  
-    <button class="btn" onclick="saveResponse()">Save & Next</button>
-    <button class="btn secondary" onclick="endSession()">End Session</button>
-  
+
+    <button type="button" class="btn" onclick="saveResponse()">Save & Next</button>
+    <button type="button" class="btn secondary" onclick="endSession()">End Session</button>
+
   </div>
 
   <div style="margin-top:40px;">
     <a href="index.html" class="btn secondary">Back</a>
   </div>
+
 </div>
 
 <script src="js/questions.js"></script>
