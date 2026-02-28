@@ -1,7 +1,7 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Chair–Student Game</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -9,16 +9,25 @@
 
 <div class="container">
   <h1>Chair–Student Alignment Session</h1>
-  <input type="text" id="sessionTitle" placeholder="Enter Session Title" style="width:100%; padding:10px; margin-bottom:20px;">
+
+  <input 
+    type="text" 
+    id="sessionTitle" 
+    placeholder="Enter Session Title" 
+    style="width:100%; padding:10px; margin-bottom:20px;"
+  >
+
   <p id="timer">Session Time: 0 min</p>
 
-  <label for="suiteSelect">Choose Suite:</label>
-  <select id="suiteSelect">
+  <label for="suiteSelect"><strong>Choose Suite:</strong></label>
+  <select id="suiteSelect" style="margin-bottom:15px;">
     <option value="expectations">Expectations</option>
     <option value="career">Career</option>
     <option value="social">Social</option>
     <option value="policy">Policy</option>
   </select>
+
+  <br>
 
   <button class="btn" onclick="drawQuestion()">Draw Question</button>
 
