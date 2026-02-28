@@ -52,3 +52,15 @@ textarea {
   padding: 10px;
   font-size: 14px;
 }
+
+.summary-block {
+  text-align: left;
+  margin-bottom: 25px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 6px;
+}
+
+hr {
+  margin-top: 15px;
+}
